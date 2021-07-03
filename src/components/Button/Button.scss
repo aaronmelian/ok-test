@@ -1,0 +1,12 @@
+@import "../../styles/base.scss";
+
+.Button {
+  border: none;
+  cursor: pointer;
+  padding: 0.75rem;
+  width: 100px;
+  background-color: transparent;
+  color: $secondary-color;
+  font-size: 1.05rem;
+  font-weight: 600;
+}

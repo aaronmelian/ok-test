@@ -1,0 +1,64 @@
+@import "../../styles/base.scss";
+
+.Steps-bar-container {
+  background-color: $light-grey;
+  padding: 1rem 1rem;
+  position: relative;
+  z-index: -2;
+}
+.Container {
+  padding-bottom: 1.5rem;
+  margin: 1rem auto;
+  width: 100%;
+  max-width: 400px;
+}
+.Progress-bar {
+  counter-reset: step;
+}
+.Progress-bar li {
+  list-style-type: none;
+  width: 33%;
+  float: left;
+  font-size: 12px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  color: $secondary-color-opaque;
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+.Progress-bar li:before {
+  width: 30px;
+  height: 30px;
+  content: counter(step);
+  counter-increment: step;
+  line-height: 30px;
+  border: 2px solid $secondary-color-opaque;
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  border-radius: 50%;
+  background-color: $white;
+}
+.Progress-bar li:after {
+  width: 100%;
+  height: 2px;
+  content: "";
+  position: absolute;
+  background-color: $secondary-color-opaque;
+  top: 15px;
+  left: -50%;
+  z-index: -1;
+}
+.Progress-bar li:first-child:after {
+  content: none;
+}
+.Progress-bar li.active {
+  color: $secondary-color;
+}
+.Progress-bar li.active:before {
+  border-color: $secondary-color;
+}
+.Progress-bar li.active + li:after {
+  background-color: $secondary-color;
+}

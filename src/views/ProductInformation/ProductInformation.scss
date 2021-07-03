@@ -1,0 +1,29 @@
+@import "../../styles//base.scss";
+
+.Step-info {
+  padding: 1.5rem;
+  font-weight: bolder;
+}
+
+.Checkbox-container {
+  display: flex;
+  align-items: flex-start;
+  font-weight: 500;
+}
+
+.Step1-checkbox {
+  -webkit-appearance: none;
+  min-width: 16px;
+  min-height: 16px;
+  background: $white;
+  border-radius: 5px;
+  border: 2px solid $secondary-color;
+}
+
+.Step1-checkbox:checked {
+  background: $secondary-color-opaque;
+}
+
+.Error-text {
+  color: $primary-color;
+}

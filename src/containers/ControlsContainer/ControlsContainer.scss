@@ -1,0 +1,8 @@
+@import "../../styles//base.scss";
+
+.Controls-container {
+  border-top: 2px solid $light-grey;
+  padding: 1rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+}
