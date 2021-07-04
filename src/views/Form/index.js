@@ -103,6 +103,7 @@ const Step2 = ({ updateCurrentStep, cancelOrder }) => {
       <div className="Hint-container">
         <label className="Input-label">{step2Constants.hintLabel}</label>
         <textarea
+          maxlength="60"
           placeholder={step2Constants.hintPlaceholder}
           value={hint}
           onChange={(e) => setHint(e.target.value)}
