@@ -4,7 +4,12 @@ import "./ControlsContainer.scss";
 import Button from "../../components/Button";
 import Icon from "../../components/Icon";
 
-const ControlsContainer = ({ validateComponentAndContinue, cancelOrder }) => {
+const ControlsContainer = ({
+  validateComponentAndContinue,
+  cancelOrder,
+  nextText,
+  secondStyle,
+}) => {
   return (
     <div
       className="Controls-container"
@@ -12,8 +17,9 @@ const ControlsContainer = ({ validateComponentAndContinue, cancelOrder }) => {
     >
       {cancelOrder && <Button clicked={() => cancelOrder()}>Cancelar</Button>}
       <Icon
+        secondStyle={secondStyle}
         icon="ChevronRight"
-        text="Siguiente"
+        text={nextText}
         clicked={() => validateComponentAndContinue()}
       />
     </div>
@@ -23,6 +29,12 @@ const ControlsContainer = ({ validateComponentAndContinue, cancelOrder }) => {
 ControlsContainer.propTypes = {
   validateComponentAndContinue: PropTypes.func.isRequired,
   cancelOrder: PropTypes.func,
+  nextText: PropTypes.string,
+  secondStyle: PropTypes.bool,
+};
+ControlsContainer.defaultProps = {
+  nextText: "Siguiente",
+  secondStyle: false,
 };
 
 export default ControlsContainer;

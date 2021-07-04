@@ -6,7 +6,7 @@ import Step3 from "../../views/Feedback";
 
 const StepsContainer = () => {
   let steps = [Step1, Step2, Step3];
-  const [passwordData, setPasswordData] = useState(null);
+  const [passwordData, setPasswordData] = useState();
   const [currentStep, setCurrentStep] = useState(1);
 
   const updateCurrentStep = (passData) => {
@@ -46,6 +46,7 @@ const StepsContainer = () => {
         cancelOrder={() => {
           cancelOrder();
         }}
+        passData={passwordData}
       />
     </div>
   );

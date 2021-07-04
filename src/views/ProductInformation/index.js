@@ -16,6 +16,7 @@ const Step1 = ({ updateCurrentStep }) => {
       setError(step1Constants.errorText);
     }
   };
+  console.log(checkAccepted);
 
   return (
     <div className="Step1">
@@ -24,14 +25,16 @@ const Step1 = ({ updateCurrentStep }) => {
         <p>{step1Constants.dataNeededText}</p>
         <p>{step1Constants.dataProtectionText}</p>
         <p>{step1Constants.checkAknowledgeText}</p>
-        <div className="Checkbox-container">
+        <div
+          className="Checkbox-container"
+          onClick={() => setCheckAccepted(!checkAccepted)}
+        >
           <input
             className="Step1-checkbox"
             type="checkbox"
-            value={checkAccepted}
-            onChange={() => setCheckAccepted(!checkAccepted)}
+            checked={checkAccepted}
           />
-          <label className="Step-label">
+          <label className="Step1-label">
             {step1Constants.checkLabel}
             {error && <span className="Error-text"> *</span>}
           </label>

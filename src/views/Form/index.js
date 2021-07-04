@@ -6,7 +6,7 @@ import { step2Constants } from "./textConstants";
 
 const Step2 = ({ updateCurrentStep, cancelOrder }) => {
   const [password1, setPassword1] = useState("");
-  const [showPassword1, setShowPassword1] = useState(true);
+  const [showPassword1, setShowPassword1] = useState(false);
   const [errorPassword1, setErrorPassword1] = useState("");
 
   const [password2, setPassword2] = useState("");
@@ -18,19 +18,19 @@ const Step2 = ({ updateCurrentStep, cancelOrder }) => {
   const validateComponentAndContinue = () => {
     let passwordMatch = !!(password1 && password2 && password1 === password2);
     if (!password2) {
-      setErrorPassword2("Por favor rellena este campo.");
+      setErrorPassword2(step2Constants.fieldNeededError);
     } else if (!passwordMatch) {
-      setErrorPassword2("Las contraseñas deben coincidir.");
+      setErrorPassword2(step2Constants.samePassNededError);
     } else {
       setErrorPassword2("");
     }
 
     if (!password1) {
-      setErrorPassword1("Por favor rellena este campo");
+      setErrorPassword1(step2Constants.fieldNeededError);
     } else if (password1.length < 8 || password1.length > 24) {
-      setErrorPassword1("La contraseña debe tener entre 8 y 24 caracteres");
+      setErrorPassword1(step2Constants.passLengthError);
     } else if (!password1.match(/(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]/)) {
-      setErrorPassword1("La contraseña debe tener una mayus y lowe");
+      setErrorPassword1(step2Constants.upperAndLowerError);
     } else if (passwordMatch) {
       setErrorPassword1("");
       setErrorPassword2("");
@@ -49,15 +49,16 @@ const Step2 = ({ updateCurrentStep, cancelOrder }) => {
       </div>
       <div className="Step2-form">
         <div className="Input-block">
-          <label className="Input-label">Crea tu Contraseña Maestra</label>
+          <label className="Input-label">{step2Constants.pass1Label}</label>
           <div>
             <input
               className="Step2-input"
               value={password1}
               onChange={(e) => setPassword1(e.target.value)}
-              placeholder="Introduce tu contraseña"
+              placeholder={step2Constants.pass1Placeholder}
               type={showPassword1 ? "text" : "password"}
             />
+            {errorPassword1 && <span className="Error-text"> *</span>}
             {!showPassword1 ? (
               <i
                 className="Eye-icon far fa-eye"
@@ -73,15 +74,17 @@ const Step2 = ({ updateCurrentStep, cancelOrder }) => {
           {errorPassword1 && <p className="Error-text">{errorPassword1}</p>}
         </div>
         <div className="Input-block">
-          <label className="Input-label">Repite tu Contraseña Maestra</label>
+          <label className="Input-label">{step2Constants.pass2Label}</label>
           <div>
             <input
               className="Step2-input"
               value={password2}
               onChange={(e) => setPassword2(e.target.value)}
-              placeholder="Repite tu contraseña"
+              placeholder={step2Constants.pass2Placeholder}
               type={showPassword2 ? "text" : "password"}
             />
+            {errorPassword2 && <span className="Error-text"> *</span>}
+
             {!showPassword2 ? (
               <i
                 className="Eye-icon far fa-eye"
@@ -98,11 +101,9 @@ const Step2 = ({ updateCurrentStep, cancelOrder }) => {
         </div>
       </div>
       <div className="Hint-container">
-        <label className="Input-label">
-          Crea una pista para recordar tu contraseña (opcional)
-        </label>
+        <label className="Input-label">{step2Constants.hintLabel}</label>
         <textarea
-          placeholder="Introduce tu pista"
+          placeholder={step2Constants.hintPlaceholder}
           value={hint}
           onChange={(e) => setHint(e.target.value)}
         />

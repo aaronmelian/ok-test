@@ -1,12 +1,55 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
+import { submitForm } from "../../services/api";
+import ControlsContainer from "../../containers/ControlsContainer";
+import Icon from "../../components/Icon";
+import { step3Constants } from "./textConstants";
+import "./Feedback.scss";
 
-import success from "./success.png";
-import error from "./error.png";
+const Step3 = ({ passData, updateCurrentStep }) => {
+  const [passwordFeedbackOk, setPasswordFeedbackOk] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-class Step3 extends Component {
-  render() {
-    return <div>Feedb</div>;
-  }
-}
+  const getPasswordFeedback = (pass) => {
+    submitForm(pass)
+      .then(() => {
+        setPasswordFeedbackOk(true);
+        setLoading(false);
+      })
+      .catch(() => {
+        setPasswordFeedbackOk(false);
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    getPasswordFeedback(passData.pass);
+  }, [passData]);
+
+  return loading ? (
+    <div>Loading...</div>
+  ) : (
+    <div className="Step3">
+      <div className="Step3-info">
+        <Icon
+          icon={passwordFeedbackOk ? "ShieldCheck" : "Warning"}
+          justIcon
+          secondStyle={passwordFeedbackOk ? "green" : "red"}
+          size={84}
+        />
+        <div className="Step3-textBox">
+          <h4 className="Step3-title">
+            {step3Constants[passwordFeedbackOk ? "ok" : "ko"].title}
+          </h4>
+          <p>{step3Constants[passwordFeedbackOk ? "ok" : "ko"].text}</p>
+        </div>
+      </div>
+      <ControlsContainer
+        nextText={passwordFeedbackOk ? "Acceder" : "Volver"}
+        secondStyle="red"
+        validateComponentAndContinue={() => updateCurrentStep()}
+      />
+    </div>
+  );
+};
 
 export default Step3;
