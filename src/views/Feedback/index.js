@@ -4,6 +4,7 @@ import ControlsContainer from "../../containers/ControlsContainer";
 import Icon from "../../components/Icon";
 import { step3Constants } from "./textConstants";
 import "./Feedback.scss";
+import openbankKey from "../../assets/img/key_openbank.png";
 
 const Step3 = ({ passData, updateCurrentStep }) => {
   const [passwordFeedbackOk, setPasswordFeedbackOk] = useState(false);
@@ -26,7 +27,10 @@ const Step3 = ({ passData, updateCurrentStep }) => {
   }, [passData]);
 
   return loading ? (
-    <div>Loading...</div>
+    <div className="Spinning-image-container">
+      <span>{step3Constants.loadingText}</span>
+      <img className="Spinning-image" src={openbankKey} />
+    </div>
   ) : (
     <div className="Step3">
       <div className="Step3-info">

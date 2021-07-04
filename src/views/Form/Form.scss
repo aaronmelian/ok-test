@@ -20,7 +20,7 @@
   font-weight: bolder;
 }
 .Input-block {
-  margin: 0 2rem 2rem 2rem;
+  margin: 2rem auto;
   max-width: 300px;
   min-width: 200px;
   font-weight: bolder;
@@ -64,4 +64,10 @@
   font-weight: 600;
   color: $light-grey2;
   text-align: end;
+}
+
+@media (min-width: 576px) {
+  .Input-block {
+    margin: 0 2rem 2rem 2rem;
+  }
 }

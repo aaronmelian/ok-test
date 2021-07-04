@@ -6,7 +6,7 @@ import Step3 from "../../views/Feedback";
 
 const StepsContainer = () => {
   let steps = [Step1, Step2, Step3];
-  const [passwordData, setPasswordData] = useState();
+  const [passwordData, setPasswordData] = useState({ pass: "", hint: "" });
   const [currentStep, setCurrentStep] = useState(1);
 
   const updateCurrentStep = (passData) => {

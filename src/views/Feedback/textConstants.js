@@ -9,4 +9,5 @@ export const step3Constants = {
     text:
       "No hemos podido modificar tu Contraseña Maestra. Iténtalo más tarde.",
   },
+  loadingText: "Creando tu password . . .",
 };

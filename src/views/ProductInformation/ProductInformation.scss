@@ -6,7 +6,37 @@
 .Step1-info {
   padding: 1.5rem;
   font-weight: 500;
-  padding-bottom: 0.5rem;
+}
+
+.Text-title {
+  font-weight: 800;
+}
+
+.Advantages-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.Advantage-block {
+  width: 100%;
+
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+.Advantage-text {
+  text-align: center;
+  width: 100%;
+  font-weight: 600;
 }
 
 .Checkbox-container {
@@ -31,4 +61,16 @@
 
 .Step1-checkbox:checked {
   background: $secondary-color-opaque;
+}
+
+@media (min-width: 576px) {
+  .Advantages-container {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .Advantage-block {
+    margin: 0 2rem;
+    width: 30%;
+  }
 }
