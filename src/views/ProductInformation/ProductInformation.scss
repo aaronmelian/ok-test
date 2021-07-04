@@ -1,14 +1,18 @@
-@import "../../styles//base.scss";
+@import "../../styles/base.scss";
 
-.Step-info {
+.Step1 {
+  color: $secondary-color;
+}
+.Step1-info {
   padding: 1.5rem;
-  font-weight: bolder;
+  font-weight: 500;
+  padding-bottom: 0.5rem;
 }
 
 .Checkbox-container {
   display: flex;
   align-items: flex-start;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .Step1-checkbox {
@@ -22,8 +26,4 @@
 
 .Step1-checkbox:checked {
   background: $secondary-color-opaque;
-}
-
-.Error-text {
-  color: $primary-color;
 }

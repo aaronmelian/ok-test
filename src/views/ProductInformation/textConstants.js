@@ -8,5 +8,5 @@ export const step1Constants = {
   checkLabel:
     "He leído y acepto suministrar mis datos a OpenBank para la contratación del servicio.",
 
-  errorText: "Por favor, rellena los campos señalados.",
+  errorText: "Por favor, rellena el campo señalado.",
 };

@@ -6,7 +6,9 @@
       max-width: 80px;
     }
   }
-  // &-content {
-  //   padding: 1rem 4rem;
-  // }
+}
+
+.Error-text {
+  color: $primary-color;
+  font-weight: 600;
 }

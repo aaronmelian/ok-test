@@ -1,15 +1,16 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import "./ProductInformation.scss";
 import ControlsContainer from "../../containers/ControlsContainer";
 import { step1Constants } from "./textConstants";
 
-const Step1 = ({ updateCurrentStep, cancelOrder }) => {
+const Step1 = ({ updateCurrentStep }) => {
   const [checkAccepted, setCheckAccepted] = useState(false);
   const [error, setError] = useState("");
 
   const validateComponentAndContinue = () => {
     if (checkAccepted) {
-      updateCurrentStep(1);
+      updateCurrentStep();
       setError("");
     } else {
       setError(step1Constants.errorText);
@@ -18,7 +19,7 @@ const Step1 = ({ updateCurrentStep, cancelOrder }) => {
 
   return (
     <div className="Step1">
-      <div className="Step-info">
+      <div className="Step1-info">
         <h2>{step1Constants.title}</h2>
         <p>{step1Constants.dataNeededText}</p>
         <p>{step1Constants.dataProtectionText}</p>
@@ -39,10 +40,13 @@ const Step1 = ({ updateCurrentStep, cancelOrder }) => {
       </div>
       <ControlsContainer
         validateComponentAndContinue={() => validateComponentAndContinue()}
-        cancelOrder={cancelOrder}
       />
     </div>
   );
+};
+
+Step1.propTypes = {
+  updateCurrentStep: PropTypes.func.isRequired,
 };
 
 export default Step1;

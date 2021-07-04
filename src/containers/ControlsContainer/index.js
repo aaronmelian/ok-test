@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import "./ControlsContainer.scss";
 import Button from "../../components/Button";
 import Icon from "../../components/Icon";
@@ -17,6 +18,11 @@ const ControlsContainer = ({ validateComponentAndContinue, cancelOrder }) => {
       />
     </div>
   );
+};
+
+ControlsContainer.propTypes = {
+  validateComponentAndContinue: PropTypes.func.isRequired,
+  cancelOrder: PropTypes.func,
 };
 
 export default ControlsContainer;

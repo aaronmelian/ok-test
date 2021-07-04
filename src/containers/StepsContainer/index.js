@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
 import "./StepsContainer.scss";
 import Step1 from "../../views/ProductInformation";
 import Step2 from "../../views/Form";
@@ -7,24 +6,20 @@ import Step3 from "../../views/Feedback";
 
 const StepsContainer = () => {
   let steps = [Step1, Step2, Step3];
+  const [passwordData, setPasswordData] = useState(null);
   const [currentStep, setCurrentStep] = useState(1);
-  useEffect(() => {}, []);
 
-  const updateCurrentStep = (change) => {
-    if (change > 0) {
-      if (currentStep === steps.length) {
-        setCurrentStep(1);
-      } else {
-        setCurrentStep(currentStep + change);
-      }
-    } else if (currentStep !== 1) {
-      setCurrentStep(currentStep + change);
+  const updateCurrentStep = (passData) => {
+    if (passData) {
+      setPasswordData(passData);
+    }
+    if (currentStep === steps.length) {
+      setCurrentStep(1);
+    } else {
+      setCurrentStep(currentStep + 1);
     }
   };
 
-  const validateComponent = () => {
-    return true;
-  };
   const cancelOrder = () => {
     setCurrentStep(1);
   };
